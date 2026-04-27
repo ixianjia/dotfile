@@ -38,7 +38,7 @@
 
 - **操作系统**: Arch Linux
 - **桌面环境**: Hyprland (Wayland)
-- **Shell**: Fish/Zsh
+- **Shell**: Bash
 - **包管理器**: Pacman/Yay
 
 ## 安装说明
@@ -116,20 +116,6 @@ Hyprland
 - 右侧栏显示时间和系统状态
 
 ## 更新和维护
-
-### 更新配置
-```bash
-cd ~/.config
-git pull origin master
-```
-
-### 提交更改
-```bash
-cd ~/.config
-git add .
-git commit -m "描述更改内容"
-git push origin master
-```
 
 ## 许可证
 
