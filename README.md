@@ -6,6 +6,60 @@
 
 ### 🖥️ 窗口管理器
 - **Hyprland** - 高性能 Wayland 合成器
+  - 官方文档: [https://wiki.hyprland.org/](https://wiki.hyprland.org/)
+  - `hypr/hyprland.conf` - 主配置文件
+  - `hypr/hyprlock.conf` - 锁屏配置
+  - `hypr/hypridle.conf` - 空闲配置
+  - `hypr/monitors.conf` - 显示器配置
+  - `hypr/themes/` - 主题配置
+
+### 📱 终端
+- **Kitty** - 快速、功能丰富的终端模拟器
+  - 官方文档: [https://sw.kovidgoyal.net/kitty/](https://sw.kovidgoyal.net/kitty/)
+  - `kitty/kitty.conf` - 主配置文件
+  - `kitty/no-preference-theme.auto.conf` - 主题配置
+
+### 📊 状态栏
+- **Waybar** - Wayland 状态栏
+  - 官方文档: [https://github.com/Alexays/Waybar](https://github.com/Alexays/Waybar)
+  - `waybar/config.jsonc` - 主配置文件
+  - `waybar/leftbar/` - 左侧栏配置
+  - `waybar/style.css` - 样式文件
+
+### 🔔 通知
+- **Mako** - 轻量级 Wayland 通知管理器
+  - 官方文档: [https://github.com/emersion/mako](https://github.com/emersion/mako)
+  - `mako/config` - 通知配置
+
+### 📝 编辑器
+- **Neovim** - Vim 现代分支
+  - 官方文档: [https://neovim.io/](https://neovim.io/)
+  - 插件管理: [LazyVim](https://github.com/LazyVim/LazyVim)
+  - `nvim/init.lua` - 主配置文件
+  - `nvim/lua/` - Lua 配置目录
+  - `nvim/lua/plugins/` - 插件配置
+  - `nvim/lua/settings/` - 设置配置
+
+## 引用和依赖
+
+### 核心依赖
+- **Hyprland** - Wayland 合成器
+- **Kitty** - 终端模拟器
+- **Waybar** - 状态栏
+- **Mako** - 通知管理器
+- **Neovim** - 文本编辑器
+
+### 字体依赖
+- **JetBrains Mono** - 等宽字体
+- **DejaVu** - 等宽字体
+- **Noto Fonts** - Unicode 字体
+
+### 语言服务器
+- **Lua Language Server** - Lua 语言支持
+- **Python Language Server** - Python 语言支持
+
+### 🖥️ 窗口管理器
+- **Hyprland** - 高性能 Wayland 合成器
   - `hypr/hyprland.conf` - 主配置文件
   - `hypr/hyprlock.conf` - 锁屏配置
   - `hypr/hypridle.conf` - 空闲配置
@@ -40,6 +94,12 @@
 - **桌面环境**: Hyprland (Wayland)
 - **Shell**: Bash
 - **包管理器**: Pacman/Yay
+
+### 推荐的额外工具
+- **Yay** - AUR 包管理器
+- **Paru** - 另一个 AUR 包管理器
+- **Dunst** - 备用通知管理器
+- **Rofi** - 应用启动器
 
 ## 安装说明
 
