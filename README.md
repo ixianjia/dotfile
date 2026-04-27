@@ -177,6 +177,9 @@ Hyprland
 
 ## 更新和维护
 
+## 效果图
+
+
 ## 许可证
 
 MIT License
