@@ -176,7 +176,10 @@ Hyprland
 - 右侧栏显示时间和系统状态
 
 ## 效果图
+
 ![images](2026-04-27-180333_hyprshot.png)
+
+![images](2026-04-27-180841_hyprshot.png)
 
 ## 许可证
 
