@@ -142,4 +142,4 @@ MIT License
 ## 联系方式
 
 - GitHub: [ixianjia](https://github.com/ixianjia)
-- 邮箱: ixianjia@example.com
+- 邮箱: ixianjia@gmail.com
