@@ -171,7 +171,7 @@ Hyprland
 
 ## 效果图
 
-![images](2026-04-27-180333_hyprshot.png)
+
 
 ![images](2026-04-27-180841_hyprshot.png)
 
