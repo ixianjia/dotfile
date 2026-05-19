@@ -5,35 +5,37 @@
 # --------------------------------------------
 # 全局设置
 # --------------------------------------------
-max-visible=5
 layer=overlay
 anchor=top-right
+sort=-priority
+outer-margin=10,0,0,0
 
 # 字体
 font=JetBrainsMono Nerd Font 11
 
 # 尺寸
-width=300
 height=150
 margin=10
 padding=12
-border-size=2
 border-radius=12
 
 # 颜色（Catppuccin Mocha）
 background-color=#1e1e2e
 text-color=#cdd6f4
 border-color=#313244
-progress-color=over #89b4fa
+progress-color=#89b4fa
 
 # 图标
-icon-path=/usr/share/icons/hicolor:/usr/share/icons/Adwaita:/usr/share/icons/Papirus
+icon-path=/usr/share/icons/Adwaita:/usr/share/icons/Papirus
 max-icon-size=48
-icon-location=left
 
-# 关键：超时设置
-default-timeout=5000
-ignore-timeout=false
+# 超时
+default-timeout=15000
+ignore-timeout=true
+
+# 格式
+format=<b>%s</b>\n%b
+text-alignment=left
 
 # 操作提示
 on-button-left=dismiss
@@ -47,34 +49,28 @@ on-button-right=dismiss-all
 # 音量通知（1.5秒，带进度条）
 [category=volume]
 border-color=#89b4fa
-progress-color=over #89b4fa
+progress-color=#89b4fa
 default-timeout=1500
-ignore-timeout=false
 
 # 亮度通知（1.5秒，带进度条）
 [category=brightness]
 border-color=#f9e2af
-progress-color=over #f9e2af
+progress-color=#f9e2af
 default-timeout=1500
-ignore-timeout=false
 
 # 麦克风通知（1.5秒）
 [category=mic]
 border-color=#f38ba8
 default-timeout=1500
-ignore-timeout=false
 
 # 截图通知（5秒，带缩略图）
 [category=screenshot]
 border-color=#a6e3a1
 default-timeout=5000
-ignore-timeout=false
 max-icon-size=64
 
 # 低电量/关键通知（不自动消失）
 [urgency=critical]
 border-color=#f38ba8
 background-color=#313244
-default-timeout=5000
-ignore-timeout=false
-
+default-timeout=0

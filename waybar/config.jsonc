@@ -1,133 +1,235 @@
 {
-    "layer": "top",
-    "position": "top",
-    "gtk-layer-shell": true,
-    "exclusive": true,
+    // ============================================================
+    // Waybar 主配置文件 (JSONC 格式，支持注释)
+    // 文档: https://github.com/Alexays/Waybar/wiki
+    // ============================================================
 
-    "margin-left": 5,
-    "margin-right": 5,
-    "margin-top": 5,
-    "margin-bottom": 0,
+    // ---- 全局布局设置 ----
+    "layer": "top",              // 层级: top(顶部)、bottom(底部)、overlay(覆盖层)
+    "position": "top",           // 位置: top(顶部)、bottom(底部)、left、right
+    "gtk-layer-shell": true,     // 使用 GTK Layer Shell 协议，确保 Waybar 正确显示在 Wayland 上
+    "exclusive": true,           // 独占区域，其他窗口不会覆盖 Waybar 所在区域
 
-    "modules-left": ["hyprland/workspaces","hyprland/windowcount"],
+    // ---- 外边距设置 ----
+    "margin-left": 5,            // 左边距(像素)
+    "margin-right": 5,           // 右边距(像素)
+    "margin-top": 5,             // 顶部边距(像素)
+    "margin-bottom": 0,          // 底部边距(像素)
+
+    // ---- 模块布局 ----
+    // 左侧模块: 工作区列表、窗口计数
+    "modules-left": ["hyprland/workspaces", "hyprland/windowcount"],
+    // 中间模块: 当前活动窗口标题
     "modules-center": ["hyprland/window"],
-    "modules-right": ["tray", "network", "bluetooth", "backlight", "battery", "pulseaudio", "memory", "cpu", "clock"],
+    // 右侧模块: 系统托盘、网络、蓝牙、亮度、电池、音频、内存、CPU、时钟
+    "modules-right": [
+        "tray", "network", "bluetooth",
+        "custom/sep",
+        "backlight", "battery",
+        "custom/sep",
+        "pulseaudio",
+        "custom/sep",
+        "memory", "cpu",
+        "custom/sep",
+        "clock", "custom/power-profile"
+    ],
 
+    // ============================================================
+    // Hyprland 工作区模块
+    // ============================================================
     "hyprland/workspaces": {
-	//"show-special": true,
+        // 是否显示特殊工作区(如 scratchpad)，当前已注释禁用
+        //"show-special": true,
+        // 显示格式: {icon} 显示工作区图标
         "format": "{icon}",
+        // 工作区图标映射
         "format-icons": {
-	        "active": "",
-       		"empty": "○",
-        	"persistent": "◉"
-		//"special": ""
+            "active": "",       // 活动工作区图标
+            "empty": "○",         // 空工作区图标
+            "persistent": "◉"     // 常驻工作区图标
+            // 特殊工作区图标，已注释
+            //"special": ""
         },
+        // 常驻工作区: 这些工作区始终显示，即使为空
         "persistent-workspaces": {
-            "*": [1, 2, 3, 4, 5]
+            "*": [1, 2, 3, 4, 5] // 所有显示器上都显示工作区 1-5
         }
     },
 
+    // ============================================================
+    // 当前窗口标题模块
+    // ============================================================
     "hyprland/window": {
-        "format": "{}",
-        "max-length": 80,
-	"separate-outputs":true,
-        "icon": true,
-	"icon-size": 16
+        "format": "{}",            // 显示窗口标题，{} 会被替换为标题
+        "max-length": 50,          // 标题最大长度(字符)，超出部分截断
+        "separate-outputs": true,  // 每个显示器独立显示各自的活动窗口
+        "icon": true,              // 显示窗口图标
+        "icon-size": 16            // 图标大小(像素)
     },
 
+    // ============================================================
+    // 窗口计数模块
+    // ============================================================
     "hyprland/windowcount": {
-    	"format": "[ {}]",
-    	"format-zero": "󰊔 ",
-    	"separate-outputs": true,
-    	"tooltip": true
+        "format": "[ {}]",       // 显示格式: [图标 数量]
+        "format-zero": "󰊔 ",      // 无窗口时的显示内容
+        "separate-outputs": true,  // 每个显示器独立计数
+        "tooltip": true,           // 显示鼠标悬停提示
+        // 点击时执行的脚本(切换窗口)
+        "on-click": "~/.config/hypr/scripts/window-switch.sh"
     },
 
+    // ============================================================
+    // 系统托盘模块
+    // ============================================================
     "tray": {
-        "icon-size": 16,
-        "spacing": 8
+        "icon-size": 18,
+        "spacing": 6
     },
 
+    // ============================================================
+    // 时钟模块
+    // ============================================================
     "clock": {
-        "format": "{:%I:%M %p}",
-        "format-alt": "{:%a %b %d}",
+        "format": "{:%I:%M %p}",                      // 默认显示格式: 12小时制 小时:分钟 AM/PM
+        "format-alt": "{:%a %b %d}",                  // 点击切换的替代格式: 星期 月份 日期
+        // 鼠标悬停提示: 显示日历
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
-            "mode-mon-col": 3,
-            "on-click-right": "mode",
+            "mode-mon-col": 3,                        // 日历显示的列数(月)
+            "on-click-right": "mode",                  // 右键切换日历显示模式
             "format": {
+                // 月份样式: 紫色粗体
                 "months": "<b><span color='#cba6f7'>{}</span></b>",
+                // 星期样式: 蓝色粗体
                 "weekdays": "<b><span color='#89b4fa'>{}</span></b>",
+                // 今天样式: 绿色粗体下划线
                 "today": "<b><u><span color='#a6e3a1'>{}</span></u></b>"
             }
         },
         "actions": {
-            "on-click-right": "mode",
-            "on-scroll-up": "shift_up",
-            "on-scroll-down": "shift_down"
+            "on-click-right": "mode",     // 右键: 切换日历模式
+            "on-scroll-up": "shift_up",    // 滚轮上: 上移日历
+            "on-scroll-down": "shift_down" // 滚轮下: 下移日历
         }
     },
 
+    // ============================================================
+    // 电池模块
+    // ============================================================
     "battery": {
-        "interval": 10,
+        "interval": 10,              // 更新间隔(秒)
         "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
+            "good": 95,              // >=95% 为良好状态
+            "warning": 30,           // <30% 为警告状态
+            "critical": 20           // <20% 为危险状态
         },
-        "format": "{icon}",
-        "format-charging": "󱐋",
-        "format-plugged": "󰂄",
-        "format-icons": ["󰝦","󰪞","󰪟","󰪠","󰪡","󰪢","󰪣","󰪤","󰪥"]
+        "format": "{icon} {capacity}%",
+        "format-charging": "󱐋 {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂"]
     },
 
+    // ============================================================
+    // 亮度模块
+    // ============================================================
     "backlight": {
-        "format": "{icon}",
+        "format": "{icon}",          // 显示亮度图标
+        // 根据亮度变化的图标数组
         "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"],
-        "on-scroll-up": "brightnessctl set +5%",
-        "on-scroll-down": "brightnessctl set 5%-"
+        "on-scroll-up": "brightnessctl set +5%",    // 滚轮上: 亮度+5%
+        "on-scroll-down": "brightnessctl set 5%-"   // 滚轮下: 亮度-5%
     },
 
+    // ============================================================
+    // 网络模块
+    // ============================================================
     "network": {
-        "format-wifi": "󰤨 {signalStrength}%",
-        "format-ethernet": "󰈀",
-        "format-disconnected": "󰤭",
+        "format-wifi": "󰤨 {signalStrength}%",               // WiFi 连接: 图标 + 信号强度
+        "format-ethernet": "󰈀",                             // 有线网络: 图标
+        "format-disconnected": "󰤭",                         // 断开连接: 图标
+        // 根据信号强度变化的图标数组
         "format-icons": ["󰤟", "󰤢", "󰤥"]
     },
 
+    // ============================================================
+    // 蓝牙模块
+    // ============================================================
     "bluetooth": {
-        "format": "󰂯",
-        "format-disabled": "",
-        "format-off": "",
-        "format-connected": "󰂱 {num_connections}",
-        "on-click": "bluetoothctl power on",
-        "on-click-right": "bluetoothctl power off"
+        "format": "󰂯",                // 蓝牙开启且已连接时的图标
+        "format-disabled": "",          // 蓝牙被禁用时的显示(空=不显示)
+        "format-off": "",              // 蓝牙关闭时的显示(空=不显示)
+        "format-connected": "󰂱 {num_connections}", // 已连接设备时的显示: 图标 + 连接数
+        "on-click": "bluetoothctl power on",    // 左键: 开启蓝牙
+        "on-click-right": "bluetoothctl power off" // 右键: 关闭蓝牙
     },
 
+    // ============================================================
+    // 音频(脉冲音频)模块
+    // ============================================================
     "pulseaudio": {
-        "format": "{icon}",
-        "format-alt": "{volume}% {icon}",
-        "format-alt-click": "click-middle",
-        "format-muted": "󰖁",
+        "format": "{icon}",           // 默认显示: 音量图标
+        "format-alt": "{volume}% {icon}", // 替代格式: 音量百分比 + 图标
+        "format-alt-click": "click-middle", // 中键切换显示格式
+        "format-muted": "󰖁",        // 静音时的图标
+        // 根据设备类型和音量变化的图标
         "format-icons": {
-            "headphones": "󰋋",
-            "handsfree": "󰖈",
-            "headset": "󰖈",
-            "default": ["󰕿", "󰖀", "󰕾"]
+            "headphones": "󰋋",      // 头戴式耳机
+            "handsfree": "󰖈",       // 免提设备
+            "headset": "󰖈",         // 头戴式耳麦
+            "default": ["󰕿", "󰖀", "󰕾"] // 默认设备音量图标(低/中/高)
         },
-        "scroll-step": 5,
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "on-click-right": "pavucontrol"
+        "scroll-step": 5,             // 滚轮调节音量的步长(%)
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle", // 左键: 切换静音
+        "on-click-right": "pavucontrol" // 右键: 打开音量控制面板
     },
 
+    // ============================================================
+    // 内存监控模块
+    // ============================================================
     "memory": {
-        "interval": 5,
-        "format": " {percentage}%",
+        "interval": 20,
+        "format": "󰑭 {percentage}%",
         "tooltip-format": "内存: {used:0.1f}GiB / {total:0.1f}GiB"
     },
 
+    // ============================================================
+    // CPU 监控模块
+    // ============================================================
     "cpu": {
-        "interval": 5,
+        "interval": 20,
         "format": "󰍛 {usage}%",
         "tooltip-format": "CPU: {usage}%"
+    },
+
+    // ============================================================
+    // 分隔符模块
+    // ============================================================
+    "custom/sep": {
+        "format": "│",
+        "tooltip": false
+    },
+
+    // ============================================================
+    // 电源模式切换模块
+    // ============================================================
+    "custom/power-profile": {
+        "exec": "~/.config/waybar/scripts/power-profile.sh",
+        "interval": "once",
+        "return-type": "json",
+        "format": "{}",
+        "on-click": "~/.config/waybar/scripts/power-profile.sh next",
+        "on-click-right": "~/.config/waybar/scripts/power-profile.sh prev",
+        "tooltip": true
+    },
+
+    // ============================================================
+    // WLR 任务栏模块(可选，当前未在主布局中启用)
+    // ============================================================
+    "wlr/taskbar": {
+        "format": "{icon}",           // 显示窗口图标
+        "icon-size": 16,              // 图标大小(像素)
+        "on-click": "activate"        // 点击: 激活对应窗口
     }
+
 }

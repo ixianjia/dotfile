@@ -68,10 +68,10 @@ tooltip {
 }
 
 #battery {
-    font-size: 16px;
+    font-size: 13px;
     color: #a6e3a1;
     background: transparent;
-    padding: 0 4px;
+    padding: 0 6px;
 }
 
 #battery.warning {
@@ -91,14 +91,14 @@ tooltip {
     color: #89dceb;
     background: transparent;
     font-size: 14px;
-    padding: 0 4px;
+    padding: 0 6px;
 }
 
 #network {
     color: #89b4fa;
     background: transparent;
     font-size: 13px;
-    padding: 0 4px;
+    padding: 0 6px;
 }
 
 #network.disconnected {
@@ -107,10 +107,9 @@ tooltip {
 
 #bluetooth {
     color: #89b4fa;
-    background: rgba(49, 50, 68, 0.6);
-    border-radius: 6px;
-    padding: 2px 8px;
-    margin: 0 4px;
+    background: transparent;
+    font-size: 13px;
+    padding: 0 6px;
 }
 
 #bluetooth.connected {
@@ -121,7 +120,7 @@ tooltip {
     font-size: 13px;
     color: #94e2d5;
     background: transparent;
-    padding: 0 4px;
+    padding: 0 6px;
 }
 
 #pulseaudio.muted {
@@ -131,6 +130,7 @@ tooltip {
 #window {
     color: #bac2de;
     margin: 0 12px;
+    min-width: 200px;
     font-weight: normal;
     font-size: 11px;
 }
@@ -154,5 +154,33 @@ tooltip {
     background: transparent;
     padding: 0 8px;
     font-size: 12px;
+}
+
+#custom-sep {
+    color: #585b70;
+    background: transparent;
+    padding: 0 2px;
+}
+
+#custom-power-profile {
+    font-size: 17px;
+    background: transparent;
+    padding: 0 6px;
+}
+
+#custom-power-profile.power-saver {
+    color: #a6e3a1;
+}
+
+#custom-power-profile.balanced {
+    color: #89b4fa;
+}
+
+#custom-power-profile.performance {
+    color: #f38ba8;
+}
+
+#custom-r_end {
+    min-width: 8px;
 }
 
