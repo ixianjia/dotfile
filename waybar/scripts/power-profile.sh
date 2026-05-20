@@ -50,4 +50,4 @@ fi
 profile=$(get_profile)
 idx=$(get_index "$profile")
 
-echo "{\"text\": \"${icons[$idx]}\", \"tooltip\": \"${tooltips[$idx]}\", \"class\": \"${classes[$idx]}\", \"alt\": \"${profile_names[$idx]}\"}"
+echo "{\"text\": \"${icons[$idx]} \", \"tooltip\": \"${tooltips[$idx]}\", \"class\": \"${classes[$idx]}\", \"alt\": \"${profile_names[$idx]}\"}"

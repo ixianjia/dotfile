@@ -180,6 +180,20 @@ tooltip {
     color: #f38ba8;
 }
 
+#idle_inhibitor {
+    font-size: 13px;
+    background: transparent;
+    padding: 0 6px;
+}
+
+#idle_inhibitor.activated {
+    color: #f9e2af;
+}
+
+#idle_inhibitor.deactivated {
+    color: #6c7086;
+}
+
 #custom-r_end {
     min-width: 8px;
 }

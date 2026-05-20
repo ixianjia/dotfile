@@ -25,7 +25,7 @@
     "modules-right": [
         "tray", "network", "bluetooth",
         "custom/sep",
-        "backlight", "battery",
+        "backlight", "battery", "idle_inhibitor",
         "custom/sep",
         "pulseaudio",
         "custom/sep",
@@ -182,6 +182,20 @@
         "scroll-step": 5,             // 滚轮调节音量的步长(%)
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle", // 左键: 切换静音
         "on-click-right": "pavucontrol" // 右键: 打开音量控制面板
+    },
+
+    // ============================================================
+    // 熄屏抑制模块
+    // ============================================================
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰥶",
+            "deactivated": "󰥲"
+        },
+        "tooltip": true,
+        "tooltip-format-activated": "熄屏已抑制 — 屏幕不会自动关闭",
+        "tooltip-format-deactivated": "熄屏正常 — 点击可临时抑制熄屏"
     },
 
     // ============================================================
